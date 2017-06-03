@@ -32,4 +32,8 @@ app.get('/:query', (req, res) => {
     res.send(time);
 });
 
+app.get('/', (req, res) => {
+    res.send('my timestamp service');
+});
+
 app.listen(process.env.PORT || 3000);
