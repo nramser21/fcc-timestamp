@@ -13,8 +13,23 @@ function unixToNatural(ms) {
     return month + day + year;
 }
 
-app.get('/', (req, res) => {
-    res.send('hello');
+app.get('/:query', (req, res) => {
+    var query = req.params.query;
+    var time = {
+        unix: null,
+        natural: null
+    };
+
+    var date = Date.parse(query);
+    if (!Number.isNaN(date)) {
+        console.log("Natural");
+        time.unix = date / 1000;
+        time.natural = query;
+    } else if (parseInt(query)) {
+        time.unix = parseInt(query);
+        time.natural = unixToNatural(time.unix);
+    }
+    res.send(time);
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.eng.PORT || 3000);
