@@ -28,8 +28,8 @@ app.get('/:query', (req, res) => {
     } else if (parseInt(query)) {
         time.unix = parseInt(query);
         time.natural = unixToNatural(time.unix);
-    } 
+    }
     res.send(time);
 });
 
-app.listen(8080);
+app.listen(3000);
